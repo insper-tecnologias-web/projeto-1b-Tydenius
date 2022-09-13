@@ -2,23 +2,44 @@
 {% load static %}
 
 {% block content %}
-<img src="{% static 'notes/img/logo-getit.png' %}" />
-<p>Como o Post-it, mas com outro verbo</p>
+<div class="appbar">
+  <img src="{% static 'notes/img/logo-getit.png' %}" class="logo" />
+  <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+</div>
 
-<form method="post">
+<main class="container">
+  <form method="post" class="form-card">
     {% csrf_token %}
-  <label for="titulo">Título</label>
-  <input id="titulo" type="text" name="titulo" />
-  <label for="detalhes">Detalhes</label>
-  <textarea id="detalhes" name="detalhes"></textarea>
-  <input type="submit" />
-</form>
+    <div class="form-card-text"> Adicionar Anotação</div>
+    <input 
+      class="form-card-title"
+      type="text"
+      name="titulo"
+      placeholder="Título"
+    />
+    <textarea
+      class="autoresize"
+      name="detalhes"
+      placeholder="Digite o conteúdo..."
+    ></textarea>
+    <button class="btn" type="submit">Criar</button>
+  </form>
 
-<div>
+  <div class="card-container">
     {% for note in notes %}
-  <div><li>{{note.title}}</li>
-        <div><ul>{{note.content}}</ul></div>
-  </div>
+    <form method="post" action="update/{{note.id}}" class = "card">
+      {% csrf_token %}
+      <input type="text" value="{{note.id}}" name="id" hidden>
+      <h3>
+          <div class="card-title"></div><div><input class="card-title-input" type="text" name="titulo" value="{{note.title}}"/></div>
+      </h3>
+      <div class="card-content"><textarea name="detalhes" rows="4"class="card-content">{{note.content}}</textarea></div>
+      <div class="card-btn"><button type="submit" class="card-btn-att"><img src="{% static 'notes/img/refresh.png' %}" class="btn-img"><button type="submit" class="card-btn-delete" name="action" formaction="delete/{{ note.id }}"><img src="{% static 'notes/img/trash-can.png' %}" class="btn-img"></button></button>
+      </div>
+  </form>
   {% endfor %}
+  </div>
+
+  <script type="text/javascript" src="{% static 'CSS/getit.js'%}"></script>
 </div>
 {% endblock %}
