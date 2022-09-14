@@ -17,11 +17,18 @@
       name="titulo"
       placeholder="Título"
     />
+    <input 
+      class="form-card-title"
+      type="text"
+      name="tag"
+      placeholder="tag"
+    />
     <textarea
       class="autoresize"
       name="detalhes"
       placeholder="Digite o conteúdo..."
     ></textarea>
+    
     <button class="btn" type="submit">Criar</button>
   </form>
 
@@ -30,6 +37,7 @@
     <form method="post" action="update/{{note.id}}" class = "card">
       {% csrf_token %}
       <input type="text" value="{{note.id}}" name="id" hidden>
+      <input type="text" value="{{note.tag_id}}" name="tag" >
       <h3>
           <div class="card-title"></div><div><input class="card-title-input" type="text" name="titulo" value="{{note.title}}"/></div>
       </h3>
