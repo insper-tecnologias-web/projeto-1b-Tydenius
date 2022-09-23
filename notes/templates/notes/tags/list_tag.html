@@ -5,7 +5,7 @@
 
 <div class="card-container">
     {% for note in notes %}
-    <form method="post" action="update/{{note.id}}" class = "card">
+    <form method="post" action="../../update/{{note.id}}" class = "card">
       {% csrf_token %}
       <input type="text" value="{{note.id}}" name="id" hidden>
       <h3>
@@ -15,7 +15,7 @@
       </h3>
       <div class="card-content"><textarea name="detalhes" rows="3"class="card-content">{{note.content}}</textarea></div>
       <div class="card-tag-label"><label class="card-tag-label" for="tag">Tag:</label><input id="tag" class="card-tag" type="text" value="{{note.tag.name}}" name="tag"></div>
-      <div class="card-btn"><button type="submit" class="card-btn-att"><img src="{% static 'notes/img/refresh.png' %}" class="btn-img" /><button type="submit" class="card-btn-delete" name="action" formaction="delete/{{ note.id }}"><img src="{% static 'notes/img/trash-can.png' %}" class="btn-img" />
+      <div class="card-btn"><button type="submit" class="card-btn-att"><img src="{% static 'notes/img/refresh.png' %}" class="btn-img" /><button type="submit" class="card-btn-delete" name="action" formaction="../../delete/{{ note.id }}"><img src="{% static 'notes/img/trash-can.png' %}" class="btn-img" />
       </div>
   </form>
   {% endfor %}
