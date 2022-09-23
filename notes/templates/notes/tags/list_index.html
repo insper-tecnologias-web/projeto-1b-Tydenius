@@ -1,0 +1,18 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="tag-list-card">
+        <h1 class="tag-list-title">Tags</h1>
+        <hr />
+        <ul>
+        {% for tag in tags %}
+            
+            <li class="tag-list-text">Tag: <a href="/tags/listar/{{tag.id}}">{{tag.name}}</a></li>
+            <hr/>
+        {% endfor %}
+        </ul>
+</div>
+
+{% endblock %}

@@ -20,6 +20,18 @@
   </head>
 
   <body>
+    <div class="appbar">
+      <a href="../../"><img src="{% static 'notes/img/logo-getit.png' %}" class="logo" /></a>
+      <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+    
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">Tags</button>
+      <div class="dropdown-content">
+        <a href="tags/listar">Lista de Tags</a>
+      </div>
+    </div>
+
     {% block content %} {% endblock %}
   </body>
 </html>

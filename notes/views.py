@@ -1,3 +1,4 @@
+from collections import Counter
 from operator import methodcaller
 from django.shortcuts import render, redirect,get_object_or_404
 from .models import Note,Tag
@@ -36,7 +37,9 @@ def index(request):
                
     else:
         all_notes = Note.objects.all()
-        return render(request, 'notes/index.html', {'notes': all_notes})
+        all_tags = Tag.objects.all()
+
+        return render(request, 'notes/index.html', {'notes': all_notes, 'tags': all_tags})
 
 
 def index_update(request, id):
@@ -76,5 +79,16 @@ def index_delete(request, id):
             delete.delete()
 
             return redirect('index')
+
+def listarTags(request):
+        all_tags = Tag.objects.all()
+        return render(request, 'notes/tags/list_index.html', {'tags': all_tags})
+
+def listarNoteTag(request, id):
+        select = Note.objects.all().filter(tag=id)
+        print(select)
+
+        return render(request, 'notes/tags/list_tag.html', {'notes': select})
+
 
                         

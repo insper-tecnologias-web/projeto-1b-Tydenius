@@ -2,39 +2,8 @@
 {% load static %}
 
 {% block content %}
-<main class="container">
-  <form method="post" class="form-card">
-    {% csrf_token %}
-    <div class="form-card-text"> Adicionar Anotação</div>
-    <input 
-      class="form-card-title"
-      type="text"
-      name="titulo"
-      placeholder="Título"
-    />
-    <input
-      list="tags" 
-      class="form-card-title"
-      type="text"
-      name="tag"
-      placeholder="tag"
-    />
-    <textarea
-      class="autoresize"
-      name="detalhes"
-      placeholder="Digite o conteúdo..."
-    ></textarea>
-    
-    <button class="btn" type="submit">Criar</button>
-  </form>
 
-  <datalist id="tags">
-    {% for tag in tags%}
-    <option value="{{tag.name}}">
-    {% endfor %}
-  </datalist>
-
-  <div class="card-container">
+<div class="card-container">
     {% for note in notes %}
     <form method="post" action="update/{{note.id}}" class = "card">
       {% csrf_token %}
@@ -52,6 +21,4 @@
   {% endfor %}
   </div>
 
-  <script type="text/javascript" src="{% static 'CSS/getit.js'%}"></script>
-</div>
 {% endblock %}
