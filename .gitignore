@@ -1,4 +1,3 @@
-#ignorar pasta env
 env/
 *.egg-info
 *.pot

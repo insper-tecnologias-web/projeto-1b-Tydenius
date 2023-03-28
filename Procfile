@@ -1,2 +1,2 @@
-release: python manage.py migrate
-web: gunicorn getit.wsgi
+release: python manage.py migrate && python manage.py collectstatic --noinput
+web: gunicorn projeto-1b-tydenius.wsgi
