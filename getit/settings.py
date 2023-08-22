@@ -26,16 +26,15 @@ load_dotenv(BASE_DIR / '.env')
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = 'w7a8a@lj8nax7tem0caa2f2rjm2ahsascyf83sa5alyv68vea'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
+DEBUG = 1
 
-ALLOWED_HOSTS = 'getittydenius.azurewebsites.net'
-CSRF_TRUSTED_ORIGINS = 'https://getittydenius.azurewebsites.net'
+ALLOWED_HOSTS = ['getittydenius.azurewebsites.net','localhost','127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://getittydenius.azurewebsites.net']
 
-SECURE_SSL_REDIRECT = \
-    os.getenv('SECURE_SSL_REDIRECT', '0').lower() in ['true', 't', '1']
+SECURE_SSL_REDIRECT = 0
 if SECURE_SSL_REDIRECT:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -98,10 +97,10 @@ WSGI_APPLICATION = 'getit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DBNAME'),
-        'HOST': os.environ.get('DBHOST'),
-        'USER': os.environ.get('DBUSER'),
-        'PASSWORD': os.environ.get('DBPASS'),
+        'NAME': 'testegetit-database',
+        'HOST': 'testegetit-server.postgres.database.azure.com',
+        'USER': 'whoqfhojfk',
+        'PASSWORD': 'H41BM4N15010P5G2$',
         'OPTIONS': {'sslmode': 'require'},
     }
 }
