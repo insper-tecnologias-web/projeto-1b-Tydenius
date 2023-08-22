@@ -38,7 +38,6 @@ SECURE_SSL_REDIRECT = 0
 if SECURE_SSL_REDIRECT:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -94,13 +93,23 @@ WSGI_APPLICATION = 'getit.wsgi.application'
 #    )
 #}
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'testegetit-database',
+#        'HOST': 'testegetit-server.postgres.database.azure.com',
+#        'USER': 'whoqfhojfk',
+#        'PASSWORD': 'H41BM4N15010P5G2$',
+#        'OPTIONS': {'sslmode': 'require'},
+#    }
+#}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'testegetit-database',
-        'HOST': 'testegetit-server.postgres.database.azure.com',
-        'USER': 'whoqfhojfk',
-        'PASSWORD': 'H41BM4N15010P5G2$',
+        'NAME': os.environ.get('dbname'),
+        'HOST': os.environ.get('host'),
+        'USER': os.environ.get('user'),
+        'PASSWORD': os.environ.get('password'),
         'OPTIONS': {'sslmode': 'require'},
     }
 }
