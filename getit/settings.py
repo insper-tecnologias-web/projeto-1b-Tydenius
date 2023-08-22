@@ -31,8 +31,8 @@ SECRET_KEY = 'w7a8a@lj8nax7tem0caa2f2rjm2ahsascyf83sa5alyv68vea'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 1
 
-ALLOWED_HOSTS = ['getittydenius.azurewebsites.net','localhost','127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['https://getittydenius.azurewebsites.net']
+ALLOWED_HOSTS = ['testegetit.azurewebsites.net','localhost','127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://testegetit.azurewebsites.net']
 
 SECURE_SSL_REDIRECT = 0
 if SECURE_SSL_REDIRECT:
